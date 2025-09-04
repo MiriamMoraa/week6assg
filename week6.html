@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Productivity Hub</title>
+    <link rel="stylesheet" href="week6.css">
+    <script src="week6.js"></script>
+</head>
+<body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+
+    <div class="container">
+        <header>
+            <h1>Personal Productivity Hub</h1>
+            <p class="subtitle">Manage your tasks, calculate, and stay organized</p>
+        </header>
+
+        <!-- Contact Form Section with Custom Validation -->
+        <section class="section">
+            <h2 class="section-title">📝 Contact Form</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" required>
+                    <div class="error-message" id="nameError">Name must be at least 2 characters long</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                    <div class="error-message" id="emailError">Please enter a valid email address</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone">
+                    <div class="error-message" id="phoneError">Phone number should be 10 digits</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject *</label>
+                    <select id="subject" name="subject" required>
+                        <option value="">Select a subject</option>
+                        <option value="general">General Inquiry</option>
+                        <option value="support">Technical Support</option>
+                        <option value="feedback">Feedback</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <div class="error-message" id="subjectError">Please select a subject</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                    <div class="error-message" id="messageError">Message must be at least 10 characters long</div>
+                </div>
+
+                <button type="submit">Send Message</button>
+                <div class="success-message" id="successMessage">Message sent successfully!</div>
+            </form>
+        </section>
+
+        <!-- Interactive Calculator -->
+        <section class="section">
+            <h2 class="section-title">🔢 Calculator</h2>
+            <div class="calculator">
+                <div class="calc-display" id="calcDisplay">0</div>
+                <button class="calc-btn clear" onclick="clearCalculator()">C</button>
+                <button class="calc-btn" onclick="deleteLast()">⌫</button>
+                <button class="calc-btn operator" onclick="appendToDisplay('/')">/</button>
+                <button class="calc-btn operator" onclick="appendToDisplay('*')">×</button>
+                
+                <button class="calc-btn" onclick="appendToDisplay('7')">7</button>
+                <button class="calc-btn" onclick="appendToDisplay('8')">8</button>
+                <button class="calc-btn" onclick="appendToDisplay('9')">9</button>
+                <button class="calc-btn operator" onclick="appendToDisplay('-')">-</button>
+                
+                <button class="calc-btn" onclick="appendToDisplay('4')">4</button>
+                <button class="calc-btn" onclick="appendToDisplay('5')">5</button>
+                <button class="calc-btn" onclick="appendToDisplay('6')">6</button>
+                <button class="calc-btn operator" onclick="appendToDisplay('+')">+</button>
+                
+                <button class="calc-btn" onclick="appendToDisplay('1')">1</button>
+                <button class="calc-btn" onclick="appendToDisplay('2')">2</button>
+                <button class="calc-btn" onclick="appendToDisplay('3')">3</button>
+                <button class="calc-btn equals" onclick="calculateResult()" rowspan="2">=</button>
+                
+                <button class="calc-btn" onclick="appendToDisplay('0')" style="grid-column: span 2;">0</button>
+                <button class="calc-btn" onclick="appendToDisplay('.')">.</button>
+            </div>
+        </section>
+
+        <!-- Dynamic Todo List -->
+        <section class="section">
+            <h2 class="section-title">✅ Todo List</h2>
+            <div class="todo-input-container">
+                <input type="text" id="todoInput" class="todo-input" placeholder="Enter a new task..." onkeypress="handleTodoEnter(event)">
+                <button onclick="addTodo()">Add Task</button>
+            </div>
+            <ul class="todo-list" id="todoList"></ul>
+            <div style="margin-top: 20px; text-align: center;">
+                <button onclick="clearCompleted()">Clear Completed</button>
+                <button onclick="clearAll()" style="background: #e53e3e; margin-left: 10px;">Clear All</button>
+            </div>
+        </section>
+
+        <!-- Interactive Color Picker -->
+        <section class="section">
+            <h2 class="section-title">🎨 Color Palette Generator</h2>
+            <div style="text-align: center; margin-bottom: 20px;">
+                <button onclick="generatePalette()">Generate Random Palette</button>
+            </div>
+            <div id="colorPalette" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 15px; margin-top: 20px;"></div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
